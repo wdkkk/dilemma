@@ -1,0 +1,31 @@
+.default{
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 17px;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: transparent;
+    transition: 0.3s ease;
+    border: 0;
+    outline: 0;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: none;
+    &:hover{
+        background-color:#f0f0f0 ;
+    }
+}
+
+
+.selected{
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 17px;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #E4E9EE;
+    transition: 0.3s ease;
+    outline: 0;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: none;
+    border: 1px solid #DEDFE0;
+}
