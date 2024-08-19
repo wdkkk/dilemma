@@ -1,7 +1,17 @@
 export type State = {
-  Tasks: Tasks
+  Tasks: TasksState
 }
 
-export type Tasks = {
-  tasks: string[]
+export type TasksState = {
+  tasks: Task[]
+  status: 'idle' | 'pending' | 'succeeded' | 'rejected',
+  isOpened: boolean,
+  openedTaskId: number,
+}
+
+export type Task = {
+  id: number, 
+  title: string,
+  content: string,
+
 }

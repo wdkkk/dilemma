@@ -1,11 +1,29 @@
-import Main from "./pages/Main/Main";
 import "./index.scss";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchTasks } from "./reducers/Tasks";
+import { State } from "./types";
+import { store } from "./store/store";
+
+import TasksDisplay from "./components/TasksDisplay/TasksDisplay";
+import { Outlet } from "react-router";
 
 function App() {
+  type AppDispatch = typeof store.dispatch;
+  const dispatch: AppDispatch = useDispatch();
+  const queryStatus = useSelector((state: State) => state.Tasks.status);
+
+  useEffect(() => {
+    if (queryStatus === "idle") {
+      dispatch(fetchTasks());
+    }
+  }, [queryStatus, dispatch]);
+
   return (
-    <>
-      <Main />
-    </>
+    <div className="container">
+      <TasksDisplay />
+      <Outlet />
+    </div>
   );
 }
 

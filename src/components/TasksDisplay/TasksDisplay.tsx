@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-import { State } from "../../types";
+import { State, Task } from "../../types";
 
 import InputText from "../../UI/InputText/InputText";
 import TaskDisplayButton from "../TaskDisplayButton/TaskDisplayButton";
@@ -8,11 +8,12 @@ import TaskDisplayButton from "../TaskDisplayButton/TaskDisplayButton";
 import { useSelector } from "react-redux";
 
 import s from "./TasksDisplay.module.scss";
+
 const TasksDisplay = () => {
   const tasks = useSelector((state: State) => state.Tasks.tasks);
 
   const [searchQuery, setSearchQuery] = useState<string>("");
-  const [filteredTasks, setFilteredTasks] = useState<string[]>(tasks);
+  const [filteredTasks, setFilteredTasks] = useState<Task[]>(tasks);
 
   const searchChangeHandler = (value: string) => {
     setSearchQuery(value);
@@ -22,11 +23,15 @@ const TasksDisplay = () => {
     } else {
       setFilteredTasks(
         tasks.filter((task) =>
-          task.toLowerCase().includes(searchQuery.toLowerCase())
+          task.title.toLowerCase().includes(searchQuery.toLowerCase())
         )
       );
     }
   };
+
+  useEffect(() => {
+    setFilteredTasks(tasks);
+  }, [tasks]);
 
   return (
     <div className={s.wrapper}>
@@ -41,7 +46,7 @@ const TasksDisplay = () => {
 
         <div className={s.taskListWrapper}>
           {filteredTasks.map((task) => (
-            <TaskDisplayButton>{task}</TaskDisplayButton>
+            <TaskDisplayButton task={task} key={task.id} />
           ))}
         </div>
       </div>
