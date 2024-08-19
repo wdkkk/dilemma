@@ -17,10 +17,9 @@ const Workspace = () => {
   else id = parseInt(params.id);
 
   const task = useSelector((state: State) =>
-    state.Tasks.tasks.filter((task) => task.id === id)
+    state.tasks.tasks.filter((task) => task.id === id)
   );
 
-  // const [content, setContent] = useState<string>(params.id);
   const [content, setContent] = useState<string>(task[0].content);
 
   const editor = useEditor({
@@ -32,7 +31,9 @@ const Workspace = () => {
   });
 
   useEffect(() => {
-    if (editor !== null) editor.commands.setContent(task[0].content);
+    if (editor !== null) {
+      editor.commands.setContent(task[0].content);
+    }
   }, [params.id]);
 
   if (!editor) {

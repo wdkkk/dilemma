@@ -10,7 +10,7 @@ import { useSelector } from "react-redux";
 import s from "./TasksDisplay.module.scss";
 
 const TasksDisplay = () => {
-  const tasks = useSelector((state: State) => state.Tasks.tasks);
+  const tasks = useSelector((state: State) => state.tasks.tasks);
 
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [filteredTasks, setFilteredTasks] = useState<Task[]>(tasks);

@@ -1,5 +1,5 @@
 export type State = {
-  Tasks: TasksState
+  tasks: TasksState
 }
 
 export type TasksState = {
