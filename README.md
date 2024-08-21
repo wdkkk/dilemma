@@ -7,7 +7,7 @@
 - [ ] delete localstorage function
 - [ ] delete task logic
 
-#### ??
+- #### ??
 
-- [ ] destroy workspace logic
-- [ ] make icon with save status
+- - [ ] destroy workspace logic
+- - [ ] make icon with save status
