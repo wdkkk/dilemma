@@ -1,15 +1,25 @@
-import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 
 import s from "./Workspace.module.scss";
-import { useSelector } from "react-redux";
+
 import { State } from "../../types";
+
+import { useEditor, EditorContent } from "@tiptap/react";
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+
+import { store } from "../../store/store";
+import { tasksSlice } from "../../reducers/tasks";
 
 const extensions = [StarterKit];
 
+type AppDispatch = typeof store.dispatch;
+
 const Workspace = () => {
+  const dispatch: AppDispatch = useDispatch();
+
   const params = useParams();
   let id;
 
@@ -27,6 +37,14 @@ const Workspace = () => {
     content: content,
     onUpdate({ editor }) {
       setContent(editor.getHTML());
+
+      const obj = {
+        id,
+        title: task[0].title,
+        content,
+      };
+
+      dispatch(tasksSlice.actions.changeTask(obj));
     },
   });
 

@@ -1,51 +1,40 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { TasksState } from "../types";
-import axios from "axios";
+import { createSlice } from "@reduxjs/toolkit";
+import { Task, TasksState } from "../types";
 
 const initialState: TasksState = {
-  tasks: [
-    {
-      id: 40,
-      title: 'test task',
-      content: '<h1>inital state task</h1>'
-    },
-  ],
+  tasks: [],
   status: 'idle',
   isOpened: false,
   openedTaskId: -1
 }
 
-export const fetchTasks = createAsyncThunk(
-  'tasks/fetchTasks',
-  async () => {
-    const res = await axios.get('http://localhost:8080/tasks')
-
-    if (res.status) return res.data
-  }
-)
 
 export const tasksSlice = createSlice({
   name: 'tasks',
   initialState,
   reducers: {
+    getTasks(state) {
+      const localStorageTasks = JSON.parse(localStorage['tasks'])
+      
+      state.tasks = [...localStorageTasks]
+    },
+    changeTask(state, action) {
+      const localStorageTasks = JSON.parse(localStorage['tasks'])
+      
+      localStorageTasks.map((task: Task) => {
+        if (task.id === action.payload.id) task.content = action.payload.content
+        
+      })
+
+      localStorage.setItem('tasks', JSON.stringify(localStorageTasks)) 
+      state.tasks = localStorageTasks
+    },
     openTask(state, action) {
       state.isOpened = true
       state.openedTaskId = action.payload.openedTaskId
     },
   },
-  extraReducers: builder => {
-    builder
-      .addCase(fetchTasks.pending, (state) => {
-        state.status = 'pending'
-      })
-      .addCase(fetchTasks.fulfilled, (state, action) => {
-        state.status = 'succeeded'
-        state.tasks.push(...action.payload)
-      })
-      .addCase(fetchTasks.rejected, (state ) => {
-        state.status = 'rejected'
-      })
-  }
+ 
 })
 
 export default tasksSlice.reducer

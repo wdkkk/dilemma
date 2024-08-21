@@ -3,7 +3,9 @@ import cors from "cors";
 
 const app = express();
 
-// app.use(cors);
+const urlencodedParser = express.urlencoded({ extended: false });
+app.use(cors);
+
 const corsOptions = {
   origin: "http://localhost:5173",
   optionsSuccessStatus: 200,
@@ -41,6 +43,21 @@ const tasks = [
   },
 ];
 
-app.get("/tasks", cors(), function (req, res) {
+app.get("/tasks", cors(corsOptions), function (req, res) {
   res.status(200).send(tasks);
 });
+
+app.post(
+  "/tasks",
+  cors(corsOptions),
+  urlencodedParser,
+  function (request, response) {
+    if (!request.body) return response.sendStatus(400);
+    console.log(request.body);
+
+    response.sendStatus(200);
+    // response.send(`${request.body.userName} - ${request.body.userAge}`);
+  }
+);
+
+app.post("/tasks");

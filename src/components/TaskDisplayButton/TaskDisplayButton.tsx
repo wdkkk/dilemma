@@ -29,8 +29,10 @@ const TaskDisplayButton = ({ task }: Props) => {
   return (
     <div
       onClick={() => {
-        dispatch(tasksSlice.actions.openTask({ openedTaskId: task.id }));
-        navigate(`/tasks/${task.id}`);
+        setTimeout(() => {
+          dispatch(tasksSlice.actions.openTask({ openedTaskId: task.id }));
+          navigate(`/tasks/${task.id}`);
+        }, 200);
       }}
       className={`${buttonType === "default" ? s.default : s.selected}`}
     >
