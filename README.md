@@ -1,9 +1,9 @@
 ### Dev Roadmap
 
-- [ ] beautify <Modal></Modal>
-- [ ] make UI Component <Loading />
+- [ ] beautify component Modal
+- [ ] make UI Component Loading
 - [ ] new task name validation
-- [ ] <Button /> styles
+- [ ] Button styles
 - [ ] delete localstorage function
 - [ ] delete task logic
 
