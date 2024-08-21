@@ -13,25 +13,18 @@
 
     .searchWrapper {
       margin-bottom: 36px;
+      display: flex;
+      justify-content: space-between;
+
+      .inputTextWrapper {
+        width: 88%;
+      }
     }
   }
 
-  .MyClass {
-    position: absolute;
-    left: 5px;
-  }
-  .MyClassEnterActive {
-    left: 15px;
-    transition: left 500ms;
-  }
-  .MyClassEnterDone {
-    left: 15px;
-  }
-  .MyClassExit {
-    left: 15px;
-  }
-  .MyClassExitActive {
-    left: 5px;
-    transition: left 500ms;
+  .modalButtonWrapper {
+    padding-top: 15px;
+    width: 40%;
+    margin: 0 auto;
   }
 }

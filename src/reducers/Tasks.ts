@@ -15,7 +15,7 @@ export const tasksSlice = createSlice({
   reducers: {
     getTasks(state) {
       const localStorageTasks = JSON.parse(localStorage['tasks'])
-      
+
       state.tasks = [...localStorageTasks]
     },
     changeTask(state, action) {
@@ -28,6 +28,15 @@ export const tasksSlice = createSlice({
 
       localStorage.setItem('tasks', JSON.stringify(localStorageTasks)) 
       state.tasks = localStorageTasks
+    },
+    addTask(state, action) {
+      const localStorageTasks = JSON.parse(localStorage['tasks'])
+      localStorageTasks.push(action.payload.obj)
+
+      localStorage.setItem('tasks', JSON.stringify(localStorageTasks)) 
+      state.tasks = localStorageTasks
+
+      console.log(JSON.parse(localStorage['tasks']))
     },
     openTask(state, action) {
       state.isOpened = true
