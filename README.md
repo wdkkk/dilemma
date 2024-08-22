@@ -15,6 +15,8 @@
 - [ ] check and pick license
 - [ ] eslint config
 - [x] fix redux getTasks logic (dont get tasks when i open task by url)
+- [ ] redux settings logic
+- [ ] local storage settings logic
 
 - #### ??
 
