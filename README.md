@@ -1,18 +1,22 @@
+# big tasks
+
+- [ ] make own markdown/html5 engine for dilemma
+- [ ] electron integration
+
 ### Dev Roadmap
 
 - [ ] beautify component Modal
 - [ ] make UI Component Loading
-- [ ] new task name validation
+- [ ] make UI Component Alert
+- [x] new task name validation
 - [ ] Button styles
 - [ ] delete localstorage function
 - [ ] delete task logic
 - [ ] check and pick license
+- [ ] eslint config
+- [x] fix redux getTasks logic (dont get tasks when i open task by url)
 
 - #### ??
 
 - - [ ] destroy workspace logic
 - - [ ] make icon with save status
-
-# big tasks
-
-- [ ] make own markdown/html5 engine for dilemma

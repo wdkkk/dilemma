@@ -4,7 +4,6 @@ export type State = {
 
 export type TasksState = {
   tasks: Task[]
-  status: 'idle' | 'pending' | 'succeeded' | 'rejected',
   isOpened: boolean,
   openedTaskId: number,
 }

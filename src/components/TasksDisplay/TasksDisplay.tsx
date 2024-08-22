@@ -1,20 +1,22 @@
-import { useEffect, useState } from "react";
-
 import { State, Task } from "../../types";
 
-import InputText from "../../UI/InputText/InputText";
-import TaskDisplayButton from "../TaskDisplayButton/TaskDisplayButton";
-
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
-import s from "./TasksDisplay.module.scss";
+import { tasksSlice } from "../../reducers/tasks";
+
 import AddButton from "../AddButton/AddButton";
 import Modal from "../Modal/Modal";
 import Button from "../../UI/Button/Button";
-import { tasksSlice } from "../../reducers/tasks";
+import InputText from "../../UI/InputText/InputText";
+import TaskDisplayButton from "../TaskDisplayButton/TaskDisplayButton";
+
+import s from "./TasksDisplay.module.scss";
 
 const TasksDisplay = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const tasks = useSelector((state: State) => state.tasks.tasks);
 
@@ -33,7 +35,7 @@ const TasksDisplay = () => {
     } else {
       setFilteredTasks(
         tasks.filter((task) =>
-          task.title.toLowerCase().includes(searchQuery.toLowerCase())
+          task.title.toLowerCase().includes(value.toLowerCase())
         )
       );
     }
@@ -41,6 +43,26 @@ const TasksDisplay = () => {
 
   const newTaskNameHandler = (value: string) => {
     setNewTaskName(value);
+  };
+
+  const addTaskButtonHandler = () => {
+    if (newTaskName) {
+      const obj = {
+        id: Date.now(),
+        title: newTaskName,
+        content: "",
+      };
+
+      dispatch(tasksSlice.actions.addTask({ obj }));
+
+      setNewTaskName("");
+
+      setModalStatus(false);
+      dispatch(tasksSlice.actions.openTask({ openedTaskId: obj.id }));
+      navigate(`/tasks/${obj.id}`);
+    } else {
+      alert("Empty name");
+    }
   };
 
   useEffect(() => {
@@ -77,20 +99,7 @@ const TasksDisplay = () => {
           changeHandler={newTaskNameHandler}
         />
         <div className={s.modalButtonWrapper}>
-          <Button
-            clickFunction={() => {
-              const obj = {
-                id: Date.now(),
-                title: newTaskName,
-                content: "",
-              };
-
-              dispatch(tasksSlice.actions.addTask({ obj }));
-              setNewTaskName("");
-            }}
-          >
-            Create new task
-          </Button>
+          <Button clickFunction={addTaskButtonHandler}>Create new task</Button>
         </div>
       </Modal>
     </div>

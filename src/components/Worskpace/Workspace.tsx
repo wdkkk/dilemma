@@ -13,6 +13,8 @@ import { useDispatch } from "react-redux";
 import { store } from "../../store/store";
 import { tasksSlice } from "../../reducers/tasks";
 
+import { Task } from "../../types";
+
 const extensions = [StarterKit];
 
 type AppDispatch = typeof store.dispatch;
@@ -26,12 +28,11 @@ const Workspace = () => {
   if (params.id === undefined) id = -1;
   else id = parseInt(params.id);
 
-  const task = useSelector((state: State) =>
+  const task: Task[] = useSelector((state: State): Task[] =>
     state.tasks.tasks.filter((task) => task.id === id)
   );
 
   const [content, setContent] = useState<string>(task[0].content);
-
   const editor = useEditor({
     extensions,
     content: content,

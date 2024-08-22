@@ -20,6 +20,24 @@
         width: 88%;
       }
     }
+    .taskListWrapper {
+      height: 89vh;
+      overflow-y: auto;
+
+      &::-webkit-scrollbar{
+      	width: 12px;
+      	background-color: #fff;
+      }
+      &::-webkit-scrollbar-track {
+        border:#CACACA 1px solid;
+        border-radius: 5px;
+        background-color: #fff;
+      }
+      &::-webkit-scrollbar-thumb {
+        border-radius: 5px;
+        background-color: #cacaca;
+      }
+    }
   }
 
   .modalButtonWrapper {

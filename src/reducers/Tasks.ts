@@ -3,7 +3,6 @@ import { Task, TasksState } from "../types";
 
 const initialState: TasksState = {
   tasks: [],
-  status: 'idle',
   isOpened: false,
   openedTaskId: -1
 }
@@ -14,29 +13,37 @@ export const tasksSlice = createSlice({
   initialState,
   reducers: {
     getTasks(state) {
-      const localStorageTasks = JSON.parse(localStorage['tasks'])
+      const localStorageTasks = localStorage['tasks']
 
-      state.tasks = [...localStorageTasks]
+      if (localStorageTasks) state.tasks = [...JSON.parse(localStorageTasks)]
+      else state.tasks = [{}]
     },
     changeTask(state, action) {
       const localStorageTasks = JSON.parse(localStorage['tasks'])
       
       localStorageTasks.map((task: Task) => {
         if (task.id === action.payload.id) task.content = action.payload.content
-        
       })
 
       localStorage.setItem('tasks', JSON.stringify(localStorageTasks)) 
       state.tasks = localStorageTasks
     },
     addTask(state, action) {
-      const localStorageTasks = JSON.parse(localStorage['tasks'])
-      localStorageTasks.push(action.payload.obj)
+      const localStorageTasks = localStorage['tasks']
 
-      localStorage.setItem('tasks', JSON.stringify(localStorageTasks)) 
-      state.tasks = localStorageTasks
+      if (localStorageTasks) {
+        const newLocalStorageTasks = JSON.parse(localStorageTasks)
+        newLocalStorageTasks.push(action.payload.obj)
+        
+        localStorage.setItem('tasks', JSON.stringify(newLocalStorageTasks)) 
+        state.tasks = newLocalStorageTasks
+      }
+      else {
+        const newLocalStorageTasks = [action.payload.obj]
 
-      console.log(JSON.parse(localStorage['tasks']))
+        localStorage.setItem('tasks', JSON.stringify(newLocalStorageTasks)) 
+        state.tasks = newLocalStorageTasks
+      }
     },
     openTask(state, action) {
       state.isOpened = true
