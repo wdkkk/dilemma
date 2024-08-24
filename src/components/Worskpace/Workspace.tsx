@@ -5,7 +5,7 @@ import s from "./Workspace.module.scss";
 import { State } from "../../types";
 
 import { useEditor, EditorContent } from "@tiptap/react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
@@ -33,6 +33,7 @@ const Workspace = () => {
   );
 
   const [content, setContent] = useState<string>(task[0].content);
+
   const editor = useEditor({
     extensions,
     content: content,
