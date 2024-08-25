@@ -3,6 +3,7 @@ import { Task, TasksState } from "../types";
 
 const initialState: TasksState = {
   tasks: [],
+  settings: [],
   isOpened: false,
   openedTaskId: -1
 }

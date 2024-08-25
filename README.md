@@ -20,7 +20,7 @@
 - [x] make TasksDisplay component resizable
 - [ ] fix bugs w resize logic (check Workspace component too)
 - [ ] bring onclick logic into separate functions
-
+- [ ] dark theme
 - ## ??
 
 - - [ ] eslint config

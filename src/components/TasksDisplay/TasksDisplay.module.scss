@@ -38,7 +38,7 @@
       }
     }
     .taskListWrapper {
-      height: 89vh;
+      height: 70vh;
       overflow-y: auto;
 
       &::-webkit-scrollbar{
@@ -54,6 +54,18 @@
         border-radius: 5px;
         background-color: #cacaca;
       }
+    }
+  }
+  
+  .settingsWrapper {
+    width: 30px;
+    height: 30px;
+    display: block;
+    position: absolute;
+    bottom: 0;
+
+    .settingsButton {
+      cursor: pointer;
     }
   }
 

@@ -3,7 +3,8 @@ export type State = {
 }
 
 export type TasksState = {
-  tasks: Task[]
+  tasks: Task[],
+  settings: Settings,
   isOpened: boolean,
   openedTaskId: number,
 }
@@ -12,5 +13,11 @@ export type Task = {
   id: number, 
   title: string,
   content: string,
+}
 
+export type Settings = SettingsElement[]
+
+export type SettingsElement = {
+  name: string,
+  value: string | boolean,
 }

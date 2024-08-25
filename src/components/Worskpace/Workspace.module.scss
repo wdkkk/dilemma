@@ -11,4 +11,17 @@
 
     font-size: 35px;
   }
+
+  .buttonGroup {
+    z-index: 1000;
+    cursor: pointer;
+
+    button {
+      cursor: pointer;
+    }
+  }
+
+  .ProseMirror {
+    height: 100vh;
+  }
 }
