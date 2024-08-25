@@ -1,11 +1,28 @@
 .wrapper {
-  width: 440px;
-  background-color: #F9FAFB;
-  height: 100vh;
-  padding-top: 28px;
+  transition: none;
+  
+  .content {
+    background-color: #F9FAFB;
+    height: 100vh;
+    padding-top: 28px;
+    position: relative;
+    margin-right: 70px;
+  }
+  .resizeLineWrapper {
+    width: 8px;
+    top: 0;
+    right: -8px;
+    height: 100vh;
+    position: absolute;
+    display: block;
+    cursor: w-resize;
 
-  border-right: 1px solid #CACACA;
-
+    .resizeLine {
+      width: 1px;
+      background-color: #cacaca;
+      height: 100vh;
+    }
+  }
 
   .contentWrapper {
     width: 90%;

@@ -5,7 +5,7 @@ import s from "./Workspace.module.scss";
 import { State } from "../../types";
 
 import { useEditor, EditorContent } from "@tiptap/react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";

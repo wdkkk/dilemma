@@ -15,8 +15,7 @@ export const tasksSlice = createSlice({
     getTasks(state) {
       const localStorageTasks = localStorage['tasks']
 
-      if (localStorageTasks) state.tasks = [...JSON.parse(localStorageTasks)]
-      else state.tasks = [{}]
+      state.tasks = [...JSON.parse(localStorageTasks)]
     },
     changeTask(state, action) {
       const localStorageTasks = JSON.parse(localStorage['tasks'])
@@ -44,6 +43,15 @@ export const tasksSlice = createSlice({
         localStorage.setItem('tasks', JSON.stringify(newLocalStorageTasks)) 
         state.tasks = newLocalStorageTasks
       }
+    },
+    deleteTask(state, action) {
+      const localStorageTasks = JSON.parse(localStorage['tasks'])
+      
+      console.log(localStorageTasks)
+      const newLocalStorageTasks = localStorageTasks.filter((task: Task) => task.id !== action.payload.id)
+
+      localStorage.setItem('tasks', JSON.stringify(newLocalStorageTasks)) 
+      state.tasks = newLocalStorageTasks
     },
     openTask(state, action) {
       state.isOpened = true

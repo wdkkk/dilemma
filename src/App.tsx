@@ -22,14 +22,10 @@ function App() {
 
   return (
     <div className="container">
-      {tasks.length !== 0 ? (
-        <>
-          <TasksDisplay />
-          <Outlet />
-        </>
-      ) : (
-        <>Loading...</>
-      )}
+      <>
+        <TasksDisplay />
+        {tasks.length !== 0 ? <Outlet /> : <></>}
+      </>
     </div>
   );
 }

@@ -8,9 +8,17 @@
   border-radius: 5px;
   border: 1px solid #cacaca;
 
+  background-color: #fff;
+
   font-size: 16px;
   color: #000000;
 
   cursor: pointer;
   user-select: none;
+
+  transition: background-color 0.3s ease;
+    
+  &:hover {
+    background-color: #cacaca;
+  }
 }
