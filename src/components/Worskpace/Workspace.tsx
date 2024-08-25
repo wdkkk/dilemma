@@ -28,31 +28,50 @@ const Workspace = () => {
   if (params.id === undefined) id = -1;
   else id = parseInt(params.id);
 
-  const task: Task[] = useSelector((state: State): Task[] =>
-    state.tasks.tasks.filter((task) => task.id === id)
-  );
+  const task: Task = useSelector((state: State) => {
+    const temp: Task[] = state.tasks.tasks.filter((task) => task.id === id);
 
-  const [content, setContent] = useState<string>(task[0].content);
+    return temp[0];
+  });
 
-  const editor = useEditor({
-    extensions,
-    content: content,
-    onUpdate({ editor }) {
-      setContent(editor.getHTML());
+  const [textareaPlaceholder, setTextareaPlaceholder] = useState<string>("");
+
+  const changeTaskTitle = (newTitle: string) => {
+    if (newTitle !== "") {
+      const obj = {
+        id,
+        title: newTitle,
+      };
+
+      dispatch(tasksSlice.actions.changeTaskTitle(obj));
+    } else {
+      setTextareaPlaceholder("untitled");
 
       const obj = {
         id,
-        title: task[0].title,
-        content,
+        title: "untitled",
       };
 
-      dispatch(tasksSlice.actions.changeTask(obj));
+      dispatch(tasksSlice.actions.changeTaskTitle(obj));
+    }
+  };
+
+  const editor = useEditor({
+    extensions,
+    content: task.content,
+    onUpdate({ editor }) {
+      const obj = {
+        id,
+        content: editor.getHTML(),
+      };
+
+      dispatch(tasksSlice.actions.changeTaskContent(obj));
     },
   });
 
   useEffect(() => {
     if (editor !== null) {
-      editor.commands.setContent(task[0].content);
+      editor.commands.setContent(task.content);
     }
   }, [params.id]);
 
@@ -61,6 +80,14 @@ const Workspace = () => {
   }
   return (
     <div className={s.wrapper}>
+      <div className={s.titleWrapper}>
+        <textarea
+          value={task.title === "untitled" ? "" : task.title}
+          placeholder={textareaPlaceholder}
+          onChange={(e) => changeTaskTitle(e.target.value)}
+        ></textarea>
+      </div>
+
       <div className="button-group">
         <button
           onClick={() => editor.chain().focus().toggleBold().run()}

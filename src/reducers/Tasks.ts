@@ -17,11 +17,25 @@ export const tasksSlice = createSlice({
 
       state.tasks = [...JSON.parse(localStorageTasks)]
     },
-    changeTask(state, action) {
+    changeTaskContent(state, action) {
       const localStorageTasks = JSON.parse(localStorage['tasks'])
       
       localStorageTasks.map((task: Task) => {
-        if (task.id === action.payload.id) task.content = action.payload.content
+        if (task.id === action.payload.id) {
+          task.content = action.payload.content
+        }
+      })
+
+      localStorage.setItem('tasks', JSON.stringify(localStorageTasks)) 
+      state.tasks = localStorageTasks
+    },
+    changeTaskTitle(state, action) {
+      const localStorageTasks = JSON.parse(localStorage['tasks'])
+      
+      localStorageTasks.map((task: Task) => {
+        if (task.id === action.payload.id) {
+          task.title = action.payload.title
+        }
       })
 
       localStorage.setItem('tasks', JSON.stringify(localStorageTasks)) 

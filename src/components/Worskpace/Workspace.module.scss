@@ -1,4 +1,14 @@
 .wrapper {
   width: calc(100vw - 440px);
   padding: 20px 0;
+
+  .titleWrapper textarea {
+    width: 100%;
+    border: 0;
+    outline: none;
+    resize: none;
+    display: inline-block;
+
+    font-size: 35px;
+  }
 }
