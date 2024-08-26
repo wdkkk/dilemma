@@ -1,3 +1,5 @@
+@import '../../constants/variables.scss';
+
 .wrapper {
   position: fixed;
   z-index: 200;
@@ -14,12 +16,14 @@
   justify-content: center;
   align-items: center;
 
+  color: var(--font-color);
+
   .content {
     padding: 10px;
 
     min-width: 600px;
  
-    background-color: #fff;
+    background-color: var(--background-primary-color);
 
     border: 1px solid #CACACA;
     border-radius: 5px;

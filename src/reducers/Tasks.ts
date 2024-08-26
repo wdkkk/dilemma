@@ -1,9 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { Task, TasksState } from "../types";
+import { Settings, Task, TasksState } from "../types";
 
 const initialState: TasksState = {
   tasks: [],
-  settings: [],
+  settings: {
+    theme: {
+      name: 'theme',
+      value: 'light',
+      options: ['light', 'dark'],
+    },
+  },
   isOpened: false,
   openedTaskId: -1
 }
@@ -16,7 +22,7 @@ export const tasksSlice = createSlice({
     getTasks(state) {
       const localStorageTasks = localStorage['tasks']
 
-      state.tasks = [...JSON.parse(localStorageTasks)]
+      if (localStorageTasks) state.tasks = [...JSON.parse(localStorageTasks)]
     },
     changeTaskContent(state, action) {
       const localStorageTasks = JSON.parse(localStorage['tasks'])
@@ -72,6 +78,45 @@ export const tasksSlice = createSlice({
       state.isOpened = true
       state.openedTaskId = action.payload.openedTaskId
     },
+    
+
+    getSettings(state) { 
+      const localStorageSettings = localStorage['settings']
+
+      state.settings = JSON.parse(localStorageSettings)
+    },
+    initSettings(state) {
+      if (!localStorage['settings']) {
+        const initSettingsObj: Settings = {
+          theme: {
+            name: 'theme',
+            value: 'light',
+            options: ['light', 'dark'],
+          },
+        }
+
+        localStorage.setItem('settings', JSON.stringify(initSettingsObj))
+        state.settings = initSettingsObj
+      }
+    },
+
+
+    handleSettingsValueChange(state, action) {
+      const localStorageSettings = localStorage['settings']
+      const newLocalStorageSettings = JSON.parse(localStorageSettings)
+
+      state.settings[action.payload.key].value = action.payload.option.value
+      
+      newLocalStorageSettings[action.payload.key].value = action.payload.option.value
+      localStorage.setItem('settings', JSON.stringify(newLocalStorageSettings))
+    },
+
+
+    deleteLocalStorageData(state) {
+      state.tasks = []
+
+      localStorage.clear()
+    }
   },
  
 })

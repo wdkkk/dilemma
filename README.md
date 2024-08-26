@@ -15,12 +15,13 @@
 - [x] Button styles
 - [ ] check and pick license
 - [x] fix redux getTasks logic (dont get tasks when i open task by url)
-- [ ] redux settings logic
-- [ ] local storage settings logic
+- [x] redux settings logic
+- [x] local storage settings logic
 - [x] make TasksDisplay component resizable
 - [ ] fix bugs w resize logic (check Workspace component too)
-- [ ] bring onclick logic into separate functions
-- [ ] dark theme
+- [x] dark theme
+- [ ] svg import logic
+
 - ## ??
 
 - - [ ] eslint config

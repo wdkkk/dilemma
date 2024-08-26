@@ -1,12 +1,18 @@
+@import '../../constants/variables.scss';
+
 .wrapper {
-  transition: none;
+  background-color: var(--background-primary-color);
   
   .content {
-    background-color: #F9FAFB;
+    transition: 
+      width 0s, 
+      background-color 0.3s ease !important;
+    background-color: var(--background-secondary-color);
     height: 100vh;
     padding-top: 28px;
     position: relative;
     margin-right: 70px;
+    color: var(--font-color)
   }
   .resizeLineWrapper {
     width: 8px;
@@ -19,7 +25,7 @@
 
     .resizeLine {
       width: 1px;
-      background-color: #cacaca;
+      background-color: var(--border-color);
       height: 100vh;
     }
   }
@@ -43,16 +49,16 @@
 
       &::-webkit-scrollbar{
       	width: 12px;
-      	background-color: #fff;
+      	background-color: var(--background-primary-color);
       }
       &::-webkit-scrollbar-track {
-        border:#CACACA 1px solid;
+        border:var(--border-color) 1px solid;
         border-radius: 5px;
-        background-color: #fff;
+        background-color: var(--background-primary-color);
       }
       &::-webkit-scrollbar-thumb {
         border-radius: 5px;
-        background-color: #cacaca;
+        background-color: var(--border-color);
       }
     }
   }
@@ -66,6 +72,10 @@
 
     .settingsButton {
       cursor: pointer;
+
+      .settingsIcon {
+        fill: var(--font-color)
+      }
     }
   }
 
@@ -74,4 +84,52 @@
     width: 40%;
     margin: 0 auto;
   }
+
+  .settingsTitle {
+    font-size: 25px;
+    text-align: center;
+  }
+
+  .settingsModalContent {
+    padding-top: 20px;
+
+    .settingsModalElement {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-transform: capitalize;
+
+      font-size: 27px;
+
+      width: 40%;
+      margin: 0 auto;
+
+
+      .settingsModalOptionValue {
+        width: 50%;
+      }
+
+      
+    }
+  }
+  .settingsModalResetButtonWrapper {
+    padding-top: 20px;
+  }
+
+  .modalText {
+    text-align: center;
+    margin-bottom: 20px;
+
+    span {
+        font-weight: 600;
+    }
+}
+.modalButtonRow {
+    display: flex;
+    justify-content: space-between;
+
+    .modalButtonWrapper {
+        width: 48%;
+    }
+}
 }

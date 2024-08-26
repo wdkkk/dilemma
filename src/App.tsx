@@ -15,10 +15,18 @@ function App() {
   const dispatch: AppDispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(tasksSlice.actions.initSettings());
+
     dispatch(tasksSlice.actions.getTasks());
+    dispatch(tasksSlice.actions.getSettings());
   }, []);
 
   const tasks = useSelector((state: State) => state.tasks.tasks);
+  const theme = useSelector((state: State) => state.tasks.settings.theme.value);
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+  }, [theme]);
 
   return (
     <div className="container">

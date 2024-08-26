@@ -15,9 +15,12 @@ export type Task = {
   content: string,
 }
 
-export type Settings = SettingsElement[]
+export type Settings = {
+  theme: SettingsElement
+}
 
 export type SettingsElement = {
   name: string,
-  value: string | boolean,
+  value: string,
+  options: Array<string>
 }

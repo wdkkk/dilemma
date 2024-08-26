@@ -1,0 +1,35 @@
+$background-primary-color-light:#ffffff; 
+$background-secondary-color-light:#f9fafb; 
+$font-color-light: #000;
+$border-color-light: #cacaca;
+$block-hover-color-light: #f0f0f0;
+$block-selected-color-light: #e4e9ee;
+$block-selected-border-color-light: #DEDFE0;
+
+$background-primary-color-dark:#191919;
+$background-secondary-color-dark: #252525; 
+$font-color-dark: #fff;
+$border-color-dark: #b0b0b0;
+$block-hover-color-dark: #616161;
+$block-selected-color-dark: #333333;
+$block-selected-border-color-dark: #5e5e5e;
+
+[data-theme="light"] {
+  --background-primary-color: #{$background-primary-color-light};
+  --background-secondary-color: #{$background-secondary-color-light};
+  --font-color: #{$font-color-light};
+  --border-color: #{$border-color-light};
+  --hover-color: #{$block-hover-color-light};
+  --selected-color: #{$block-selected-color-light};
+  --selected-border-color: #{$block-selected-border-color-light};
+}
+
+[data-theme="dark"] {
+  --background-primary-color: #{$background-primary-color-dark};
+  --background-secondary-color: #{$background-secondary-color-dark};
+  --font-color: #{$font-color-dark};
+  --border-color: #{$border-color-dark};
+  --hover-color: #{$block-hover-color-dark};
+  --selected-color: #{$block-selected-color-dark};
+  --selected-border-color: #{$block-selected-border-color-dark};
+}

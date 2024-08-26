@@ -1,8 +1,14 @@
+@import '../../constants/variables.scss';
+
 .wrapper {
   width: calc(100vw - 440px);
   padding: 20px 0;
+  background-color: var(--background-primary-color);  
+  color: var(--font-color);
 
   .titleWrapper textarea {
+    background-color: var(--background-primary-color);  
+    color: var(--font-color);
     width: 100%;
     border: 0;
     outline: none;

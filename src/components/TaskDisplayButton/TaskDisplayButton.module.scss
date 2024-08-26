@@ -1,3 +1,5 @@
+@import '../../constants/variables.scss';
+
 .default{
     display: flex;
     justify-content: space-between;
@@ -17,7 +19,7 @@
     margin-bottom: 10px;
 
     &:hover{
-        background-color:#f0f0f0 ;
+        background-color: var(--hover-color);
         
         .deleteButton {
             opacity: 1;
@@ -36,12 +38,12 @@
     padding: 8px 12px;
     font-size: 17px;
     font-family: 'Segoe UI', sans-serif;
-    background-color: #E4E9EE;
+    background-color: var(--selected-color);
     transition: 0.3s ease;
     outline: 0;
     border-radius: 6px;
     box-shadow: none;
-    border: 1px solid #DEDFE0;
+    border: 1px solid var(--selected-border-color);
     margin-bottom: 10px;
 
     .deleteButton {

@@ -1,13 +1,18 @@
+@import './constants/variables.scss';
+
 *, html, body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Segoe UI', sans-serif;
+
+  transition: all 0.3s ease;
 }
 
 .container {
   font-family: 'Segoe UI', sans-serif;
-
   display: flex;
+
+  background-color: var(--background-primary-color);
 }
 

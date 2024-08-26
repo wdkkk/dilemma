@@ -13,8 +13,7 @@ import InputText from "../../UI/InputText/InputText";
 import TaskDisplayButton from "../TaskDisplayButton/TaskDisplayButton";
 
 import s from "./TasksDisplay.module.scss";
-
-import settingsIcon from "../../assets/settings.svg";
+import Select from "../../UI/Select/Select";
 
 type Drag = {
   active: boolean;
@@ -26,12 +25,15 @@ const TasksDisplay = () => {
   const navigate = useNavigate();
 
   const tasks = useSelector((state: State) => state.tasks.tasks);
+  const settings = useSelector((state: State) => state.tasks.settings);
 
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [filteredTasks, setFilteredTasks] = useState<Task[]>(tasks);
 
   const [modalStatus, setModalStatus] = useState<boolean>(false);
   const [settingsModalStatus, setSettingsModalStatus] =
+    useState<boolean>(false);
+  const [confirmDeleteModalStatus, setConfirmDeleteModalStatus] =
     useState<boolean>(false);
 
   const [newTaskName, setNewTaskName] = useState<string>("");
@@ -162,14 +164,17 @@ const TasksDisplay = () => {
           </div>
         </div>
         <div className={s.settingsWrapper}>
-          <div className={s.settingsButton} onClick={() => {}}>
+          <div
+            className={s.settingsButton}
+            onClick={() => {
+              setSettingsModalStatus(true);
+            }}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              enable-background="new 0 0 24 24"
               height="24px"
-              viewBox="0 0 24 24"
               width="24px"
-              fill="#000"
+              className={s.settingsIcon}
             >
               <g>
                 <path d="M0,0h24v24H0V0z" fill="none" />
@@ -179,6 +184,7 @@ const TasksDisplay = () => {
           </div>
         </div>
       </div>
+
       <Modal status={modalStatus} setStatus={setModalStatus}>
         <InputText
           value={newTaskName}
@@ -189,10 +195,91 @@ const TasksDisplay = () => {
           <Button clickFunction={addTaskButtonHandler}>Create new task</Button>
         </div>
       </Modal>
+
       <Modal status={settingsModalStatus} setStatus={setSettingsModalStatus}>
         <div className={s.settingsTitle}>Settings</div>
         <div className={s.settingsModalContent}>
-          <div className={s.settingsModalElement}></div>
+          {(() => {
+            const options = [];
+
+            for (const key in settings) {
+              options.push(
+                <div
+                  className={s.settingsModalElement}
+                  key={settings[key].name}
+                >
+                  <div className={s.settingsModalOptionTitle}>
+                    {settings[key].name}:
+                  </div>
+                  <div className={s.settingsModalOptionValue}>
+                    <Select
+                      onChangeHandler={(e) => {
+                        const obj = {
+                          name: settings[key].name,
+                          value: e.target.value,
+                        };
+
+                        dispatch(
+                          tasksSlice.actions.handleSettingsValueChange({
+                            option: obj,
+                            key: key,
+                          })
+                        );
+                      }}
+                      defaultValue={settings[key].value}
+                      options={settings[key].options}
+                    />
+                  </div>
+                </div>
+              );
+            }
+
+            return options;
+          })()}
+        </div>
+        <div className={s.settingsModalResetButtonWrapper}>
+          <Button
+            clickFunction={() => {
+              setSettingsModalStatus(false);
+              setConfirmDeleteModalStatus(true);
+            }}
+          >
+            Delete localStorage data
+          </Button>
+        </div>
+      </Modal>
+
+      <Modal
+        status={confirmDeleteModalStatus}
+        setStatus={setConfirmDeleteModalStatus}
+      >
+        <div className={s.modalText}>
+          You are sure you want to delete all tasks and settings data?
+        </div>
+
+        <div className={s.modalButtonRow}>
+          <div className={s.modalButtonWrapper}>
+            <Button
+              clickFunction={() => {
+                setConfirmDeleteModalStatus(false);
+
+                dispatch(tasksSlice.actions.deleteLocalStorageData());
+                dispatch(tasksSlice.actions.initSettings());
+              }}
+            >
+              Yes
+            </Button>
+          </div>
+          <div className={s.modalButtonWrapper}>
+            <Button
+              clickFunction={() => {
+                setSettingsModalStatus(false);
+                setConfirmDeleteModalStatus(false);
+              }}
+            >
+              No
+            </Button>
+          </div>
         </div>
       </Modal>
     </div>
