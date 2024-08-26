@@ -1,4 +1,4 @@
-<img id="img" style="width: 473px; margin: 0 auto;" src="https://i.imgur.com/EU2djB4.png"></img>
+<img id="img" style="width: 473px; margin: 0 auto;" src="https://i.imgur.com/kZM8f17.png"></img>
 
 # big tasks
 
