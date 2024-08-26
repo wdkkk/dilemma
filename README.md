@@ -28,9 +28,3 @@
 
 - - [ ] eslint config
 - - [ ] destroy workspace logic
-
-<style>
-  #img {
-   
-  }
-</style>
