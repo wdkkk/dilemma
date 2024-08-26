@@ -1,3 +1,5 @@
+<img id="img" style="width: 473px; margin: 0 auto;" src="https://i.imgur.com/EU2djB4.png"></img>
+
 # big tasks
 
 - [ ] make own markdown/html5 engine for dilemma
@@ -26,3 +28,9 @@
 
 - - [ ] eslint config
 - - [ ] destroy workspace logic
+
+<style>
+  #img {
+   
+  }
+</style>
