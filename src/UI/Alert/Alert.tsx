@@ -1,4 +1,4 @@
-import { Dispatch, ReactNode, SetStateAction, useEffect } from "react";
+import { Dispatch, ReactNode, SetStateAction } from "react";
 import s from "./Alert.module.scss";
 
 type Props = {
