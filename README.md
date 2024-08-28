@@ -8,6 +8,7 @@
 
 # Dev Roadmap
 
+- [ ] fix
 - [ ] beautify component Modal
 - [ ] beautify component Alert
 - [x] new task name validation
