@@ -16,7 +16,7 @@
 - [x] delete task logic
 - [x] delete localstorage function
 - [x] Button styles
-- [ ] check and pick license
+- [ ] check licenses and pick
 - [x] fix redux getTasks logic (dont get tasks when i open task by url)
 - [x] redux settings logic
 - [x] local storage settings logic
