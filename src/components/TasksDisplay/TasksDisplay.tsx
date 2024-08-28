@@ -1,4 +1,5 @@
 import { State, Task } from "../../types";
+import CSS from "csstype";
 
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,13 +8,14 @@ import { useNavigate } from "react-router-dom";
 import { tasksSlice } from "../../reducers/tasks";
 
 import AddButton from "../AddButton/AddButton";
-import Modal from "../Modal/Modal";
+import Modal from "../../UI/Modal/Modal";
 import Button from "../../UI/Button/Button";
 import InputText from "../../UI/InputText/InputText";
 import TaskDisplayButton from "../TaskDisplayButton/TaskDisplayButton";
 
 import s from "./TasksDisplay.module.scss";
 import Select from "../../UI/Select/Select";
+import Alert from "../../UI/Alert/Alert";
 
 type Drag = {
   active: boolean;
@@ -35,58 +37,57 @@ const TasksDisplay = () => {
     useState<boolean>(false);
   const [confirmDeleteModalStatus, setConfirmDeleteModalStatus] =
     useState<boolean>(false);
+  const [emptyAlertStatus, setEmptyAlertStatus] = useState<boolean>(false);
 
   const [newTaskName, setNewTaskName] = useState<string>("");
 
-  const [drag, setDrag] = useState<Drag>({
+  const [dragData, setDragData] = useState<Drag>({
     active: false,
     x: 0,
   });
 
-  const [dims, setDims] = useState({
-    width: 440,
-  });
+  const [width, setWidth] = useState<number>(440);
 
   const boxStyle = {
-    width: `${dims.width}px`,
+    width: `${width}px`,
   };
-  const componentStyle = {
+  const componentStyle: CSS.Properties = {
     cursor: "w-resize",
     userSelect: "none",
   };
 
   const startResize = (e: { clientX: number }) => {
-    setDrag({
+    setDragData({
       active: true,
       x: e.clientX,
     });
   };
 
   const resizeFrame = (e: { clientX: number }) => {
-    const { active, x } = drag;
+    const { active, x } = dragData;
     if (active) {
       const xDiff = Math.abs(x - e.clientX);
-      const newW = x > e.clientX ? dims.width - xDiff : dims.width + xDiff;
+      const newW = x > e.clientX ? width - xDiff : width + xDiff;
 
-      if (dims.width >= 1000) {
-        if (newW < dims.width) {
-          setDrag({ ...drag, x: e.clientX });
-          setDims({ width: newW });
+      if (width >= 1000) {
+        if (newW < width) {
+          setDragData({ ...dragData, x: e.clientX });
+          setWidth(newW);
         }
-      } else if (dims.width <= 440) {
-        if (newW > dims.width) {
-          setDrag({ ...drag, x: e.clientX });
-          setDims({ width: newW });
+      } else if (width <= 440) {
+        if (newW > width) {
+          setDragData({ ...dragData, x: e.clientX });
+          setWidth(newW);
         }
       } else {
-        setDrag({ ...drag, x: e.clientX });
-        setDims({ width: newW });
+        setDragData({ ...dragData, x: e.clientX });
+        setWidth(newW);
       }
     }
   };
 
   const stopResize = () => {
-    setDrag({ ...drag, active: false });
+    setDragData({ ...dragData, active: false });
   };
 
   const searchChangeHandler = (value: string) => {
@@ -123,7 +124,7 @@ const TasksDisplay = () => {
       dispatch(tasksSlice.actions.openTask({ openedTaskId: obj.id }));
       navigate(`/tasks/${obj.id}`);
     } else {
-      alert("Empty name");
+      setEmptyAlertStatus(true);
     }
   };
 
@@ -134,7 +135,7 @@ const TasksDisplay = () => {
   return (
     <div
       className={s.wrapper}
-      style={drag.active ? componentStyle : undefined}
+      style={dragData.active ? componentStyle : undefined}
       onMouseMove={resizeFrame}
       onMouseLeave={stopResize}
       onMouseUp={stopResize}
@@ -282,6 +283,10 @@ const TasksDisplay = () => {
           </div>
         </div>
       </Modal>
+
+      <Alert status={emptyAlertStatus} setStatus={setEmptyAlertStatus}>
+        Empty task name!
+      </Alert>
     </div>
   );
 };

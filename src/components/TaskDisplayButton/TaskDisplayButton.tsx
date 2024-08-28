@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
-import Modal from "../Modal/Modal";
+import Modal from "../../UI/Modal/Modal";
 import Button from "../../UI/Button/Button";
 
 type Props = {

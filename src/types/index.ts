@@ -22,5 +22,5 @@ export type Settings = {
 export type SettingsElement = {
   name: string,
   value: string,
-  options: Array<string>
+  options: string[]
 }

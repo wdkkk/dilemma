@@ -9,8 +9,7 @@
 # Dev Roadmap
 
 - [ ] beautify component Modal
-- [ ] make UI Component Loading
-- [ ] make UI Component Alert
+- [ ] beautify component Alert
 - [x] new task name validation
 - [x] delete task logic
 - [x] delete localstorage function
