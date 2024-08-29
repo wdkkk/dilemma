@@ -1,6 +1,7 @@
 import StarterKit from "@tiptap/starter-kit";
 
 import s from "./Workspace.module.scss";
+import "./Workspace.scss";
 
 import { State } from "../../types";
 
@@ -256,7 +257,7 @@ const Workspace = () => {
         </button> */}
       </div>
 
-      <EditorContent className={s.editor} editor={editor} />
+      <EditorContent className={"editor"} editor={editor} />
       <div></div>
     </div>
   );

@@ -12,6 +12,7 @@
 - [ ] beautify component Modal
 - [ ] beautify component Alert
 - [ ] translating
+- [ ] toggle styling in ButtonsList
 - [x] new task name validation
 - [x] delete task logic
 - [x] delete localstorage function
