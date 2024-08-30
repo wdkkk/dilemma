@@ -24,7 +24,7 @@
 - [x] make TasksDisplay component resizable
 - [ ] fix bugs w resize logic (check Workspace component too)
 - [x] dark theme
-- [ ] svg import logic
+- [x] svg import logic
 
 - ## ??
 
