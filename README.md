@@ -8,7 +8,7 @@
 
 # dev roadmap
 
-- [ ] fix task is undefined error
+- [x] fix task is undefined error
 - [x] beautify component Modal
 - [x] beautify component Alert
 - [ ] translating

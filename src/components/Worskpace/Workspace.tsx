@@ -10,18 +10,18 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import { store } from "../../store/store";
 import { tasksSlice } from "../../reducers/tasks";
 
 import { Task } from "../../types";
 
-const extensions = [StarterKit];
-
 type AppDispatch = typeof store.dispatch;
 
 const Workspace = () => {
   const dispatch: AppDispatch = useDispatch();
+  const navigate = useNavigate();
 
   const params = useParams();
   let id;
@@ -29,13 +29,18 @@ const Workspace = () => {
   if (params.id === undefined) id = -1;
   else id = parseInt(params.id);
 
+  const [textareaPlaceholder, setTextareaPlaceholder] = useState<string>("");
+
   const task: Task = useSelector((state: State) => {
     const temp: Task[] = state.tasks.tasks.filter((task) => task.id === id);
 
-    return temp[0];
+    if (temp[0]) {
+      return temp[0];
+    } else {
+      navigate("/");
+      return { id: -1, title: "", content: "" };
+    }
   });
-
-  const [textareaPlaceholder, setTextareaPlaceholder] = useState<string>("");
 
   const changeTaskTitle = (newTitle: string) => {
     if (newTitle !== "") {
@@ -58,7 +63,7 @@ const Workspace = () => {
   };
 
   const editor = useEditor({
-    extensions,
+    extensions: [StarterKit],
     content: task.content,
     onUpdate({ editor }) {
       const obj = {
