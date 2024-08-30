@@ -1,8 +1,37 @@
 .editor {
-  max-width: calc(96vw - 440px);
+  max-width: calc(95vw - 440px);
   margin-top: 20px;
+  height: 82%;
 
   .ProseMirror {
     min-height: 200px;
+    outline: none;
+    height: 100%;
+    overflow-y: auto;
+
+    ul {
+      position: relative;
+      left: 16px;
+    }
+    ol {
+      position: relative;
+      left: 17.5px;
+    }
+
+    h2 {
+      font-size: 28px;
+    }
+    h3 {
+      font-size: 26px;
+    }
+    h4 {
+      font-size: 23px;
+    }
+    h5 {
+      font-size: 20px;
+    }
+    h6 {
+      font-size: 18px;
+    }
   }
 }

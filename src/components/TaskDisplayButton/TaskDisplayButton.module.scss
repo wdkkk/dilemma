@@ -17,6 +17,14 @@
     cursor: pointer;
     box-shadow: none;
     margin-bottom: 10px;
+    overflow: hidden;
+
+    .buttonText {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        text-wrap: nowrap;
+        width: 94%;
+    }
 
     &:hover{
         background-color: var(--hover-color);
@@ -45,6 +53,13 @@
     box-shadow: none;
     border: 1px solid var(--selected-border-color);
     margin-bottom: 10px;
+
+    .buttonText {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: 94%;
+        text-wrap: nowrap;
+    }
 
     .deleteButton {
         opacity: 1;

@@ -45,7 +45,7 @@ const TaskDisplayButton = ({ task }: Props) => {
         }, 200);
       }}
     >
-      <div>{task.title}</div>
+      <div className={s.buttonText}>{task.title}</div>
 
       <div
         className={s.deleteButton}

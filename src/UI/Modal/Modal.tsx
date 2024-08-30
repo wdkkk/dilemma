@@ -1,4 +1,11 @@
-import { Dispatch, ReactNode, SetStateAction } from "react";
+import {
+  CSSProperties,
+  Dispatch,
+  ReactNode,
+  SetStateAction,
+  useEffect,
+  useState,
+} from "react";
 import s from "./Modal.module.scss";
 
 type Props = {
@@ -8,11 +15,44 @@ type Props = {
 };
 
 const Modal = (props: Props) => {
+  const [opacity, setOpacity] = useState<number>(0);
+  const [isVisible, setIsVisible] = useState<boolean>(props.status);
+
+  const styles: CSSProperties = {
+    opacity: opacity,
+  };
+
+  useEffect(() => {
+    if (props.status) {
+      setIsVisible(true);
+      setTimeout(() => {
+        setOpacity(1);
+      }, 100);
+
+      // setTimeout(() => {
+      //   setOpacity(0);
+      // }, 2000);
+      // setTimeout(() => {
+      //   props.setStatus(false);
+      //   setIsVisible(false);
+      // }, 2500);
+    } else {
+      setOpacity(0);
+      setTimeout(() => {
+        setIsVisible(false);
+      }, 300);
+    }
+  }, [props.status]);
+
   return (
     <>
-      {props.status ? (
+      {isVisible ? (
         <div className={s.wrapper} onClick={() => props.setStatus(false)}>
-          <div className={s.content} onClick={(e) => e.stopPropagation()}>
+          <div
+            style={styles}
+            className={s.content}
+            onClick={(e) => e.stopPropagation()}
+          >
             {props.children}
           </div>
         </div>

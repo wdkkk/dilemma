@@ -7,7 +7,7 @@ const initialState: TasksState = {
     theme: {
       name: 'theme',
       value: 'light',
-      options: ['light', 'dark'],
+      options: ['light', 'dark', 'blue', 'red'],
     },
   },
   isOpened: false,
@@ -91,7 +91,7 @@ export const tasksSlice = createSlice({
           theme: {
             name: 'theme',
             value: 'light',
-            options: ['light', 'dark'],
+            options: ['light', 'dark', 'blue', 'red'],
           },
         }
 

@@ -6,13 +6,30 @@ $block-hover-color-light: #f0f0f0;
 $block-selected-color-light: #e4e9ee;
 $block-selected-border-color-light: #DEDFE0;
 
-$background-primary-color-dark:#191919;
-$background-secondary-color-dark: #252525; 
+$background-primary-color-dark:#161616;
+$background-secondary-color-dark: #242424; 
 $font-color-dark: #fff;
 $border-color-dark: #b0b0b0;
 $block-hover-color-dark: #616161;
 $block-selected-color-dark: #333333;
 $block-selected-border-color-dark: #5e5e5e;
+
+$background-primary-color-blue:#001b48;
+$background-secondary-color-blue: #02457a; 
+$font-color-blue: #fff;
+$border-color-blue: #007aaa;
+$block-hover-color-blue: #006da0;
+$block-selected-color-blue: #006594;
+$block-selected-border-color-blue: #007db8;
+
+$background-primary-color-red:#884242;
+$background-secondary-color-red: #8f5050; 
+$font-color-red: #fff;
+$border-color-red: #c09a9a;
+$block-hover-color-red: #ac4d4d;
+$block-selected-color-red: #793636;
+$block-selected-border-color-red: #926363;
+
 
 [data-theme="light"] {
   --background-primary-color: #{$background-primary-color-light};
@@ -32,4 +49,24 @@ $block-selected-border-color-dark: #5e5e5e;
   --hover-color: #{$block-hover-color-dark};
   --selected-color: #{$block-selected-color-dark};
   --selected-border-color: #{$block-selected-border-color-dark};
+}
+
+[data-theme="blue"] {
+  --background-primary-color: #{$background-primary-color-blue};
+  --background-secondary-color: #{$background-secondary-color-blue};
+  --font-color: #{$font-color-blue};
+  --border-color: #{$border-color-blue};
+  --hover-color: #{$block-hover-color-blue};
+  --selected-color: #{$block-selected-color-blue};
+  --selected-border-color: #{$block-selected-border-color-blue};
+}
+
+[data-theme="red"] {
+  --background-primary-color: #{$background-primary-color-red};
+  --background-secondary-color: #{$background-secondary-color-red};
+  --font-color: #{$font-color-red};
+  --border-color: #{$border-color-red};
+  --hover-color: #{$block-hover-color-red};
+  --selected-color: #{$block-selected-color-red};
+  --selected-border-color: #{$block-selected-border-color-red};
 }

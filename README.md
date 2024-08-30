@@ -6,11 +6,11 @@
 - [ ] electron integration
 - [ ] make landing page
 
-# Dev Roadmap
+# dev roadmap
 
 - [ ] fix task is undefined error
-- [ ] beautify component Modal
-- [ ] beautify component Alert
+- [x] beautify component Modal
+- [x] beautify component Alert
 - [ ] translating
 - [ ] toggle styling in ButtonsList
 - [x] new task name validation

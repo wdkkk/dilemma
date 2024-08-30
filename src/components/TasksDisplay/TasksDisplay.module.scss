@@ -46,6 +46,7 @@
     .taskListWrapper {
       height: 70vh;
       overflow-y: auto;
+      overflow-x: hidden;
 
       &::-webkit-scrollbar{
       	width: 12px;

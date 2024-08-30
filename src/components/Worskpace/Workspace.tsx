@@ -19,11 +19,6 @@ import { Task } from "../../types";
 const extensions = [StarterKit];
 
 type AppDispatch = typeof store.dispatch;
-type ContextMenuPosition = {
-  x: number;
-  y: number;
-};
-type ContextMenuStatus = "none" | "block";
 
 const Workspace = () => {
   const dispatch: AppDispatch = useDispatch();
@@ -86,12 +81,7 @@ const Workspace = () => {
   }
 
   return (
-    <div
-      className={s.wrapper}
-      onSelect={(e) => {
-        console.log(e);
-      }}
-    >
+    <div className={s.wrapper}>
       <div className={s.titleWrapper}>
         <textarea
           value={task.title === "untitled" ? "" : task.title}

@@ -2,6 +2,8 @@
 
 .wrapper {
   width: calc(100vw - 440px);
+  height: 100vh;
+
   padding: 20px 0;
   background-color: var(--background-primary-color);  
   color: var(--font-color);
