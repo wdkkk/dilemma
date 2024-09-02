@@ -16,6 +16,8 @@ import { store } from "../../store/store";
 import { tasksSlice } from "../../reducers/tasks";
 
 import { Task } from "../../types";
+import SVGSelector from "../../assets/SVGSelector";
+import ButtonList from "../ButtonList/ButtonList";
 
 type AppDispatch = typeof store.dispatch;
 
@@ -96,45 +98,42 @@ const Workspace = () => {
       </div>
 
       <div className={s.buttonGroup}>
+
         <button
           onClick={() => editor.chain().focus().toggleBold().run()}
-          disabled={!editor.can().chain().focus().toggleBold().run()}
-          className={editor.isActive("bold") ? "is-active" : ""}
         >
-          Bold
+           <SVGSelector name={"bold"}/>
         </button>
         <button
           onClick={() => editor.chain().focus().toggleItalic().run()}
-          disabled={!editor.can().chain().focus().toggleItalic().run()}
-          className={editor.isActive("italic") ? "is-active" : ""}
+          // disabled={!editor.can().chain().focus().toggleItalic().run()}
+          // className={editor.isActive("italic") ? "is-active" : ""}
         >
-          Italic
+          <SVGSelector name={"italic"}/>
         </button>
         <button
           onClick={() => editor.chain().focus().toggleStrike().run()}
-          disabled={!editor.can().chain().focus().toggleStrike().run()}
+          // disabled={!editor.can().chain().focus().toggleStrike().run()}
           className={editor.isActive("strike") ? "is-active" : ""}
         >
-          Strike
+          <SVGSelector name={"strike"}/>
         </button>
         <button
           onClick={() => editor.chain().focus().toggleCode().run()}
-          disabled={!editor.can().chain().focus().toggleCode().run()}
+          // disabled={!editor.can().chain().focus().toggleCode().run()}
           className={editor.isActive("code") ? "is-active" : ""}
         >
-          Code
+          <SVGSelector name={"code"}/>
         </button>
-        <button onClick={() => editor.chain().focus().unsetAllMarks().run()}>
+        {/* <button onClick={() => editor.chain().focus().unsetAllMarks().run()}>
           Clear marks
-        </button>
-        <button onClick={() => editor.chain().focus().clearNodes().run()}>
-          Clear nodes
-        </button>
+        </button> */}
+        
         <button
           onClick={() => editor.chain().focus().setParagraph().run()}
           className={editor.isActive("paragraph") ? "is-active" : ""}
         >
-          Paragraph
+          <SVGSelector name={"paragraph"}/>
         </button>
         <button
           onClick={() =>
@@ -144,7 +143,7 @@ const Workspace = () => {
             editor.isActive("heading", { level: 1 }) ? "is-active" : ""
           }
         >
-          H1
+          <SVGSelector name={"h1"}/>
         </button>
         <button
           onClick={() =>
@@ -154,7 +153,7 @@ const Workspace = () => {
             editor.isActive("heading", { level: 2 }) ? "is-active" : ""
           }
         >
-          H2
+          <SVGSelector name={"h2"}/>
         </button>
         <button
           onClick={() =>
@@ -164,7 +163,7 @@ const Workspace = () => {
             editor.isActive("heading", { level: 3 }) ? "is-active" : ""
           }
         >
-          H3
+          <SVGSelector name={"h3"}/>
         </button>
         <button
           onClick={() =>
@@ -174,7 +173,7 @@ const Workspace = () => {
             editor.isActive("heading", { level: 4 }) ? "is-active" : ""
           }
         >
-          H4
+          <SVGSelector name={"h4"}/>
         </button>
         <button
           onClick={() =>
@@ -184,7 +183,7 @@ const Workspace = () => {
             editor.isActive("heading", { level: 5 }) ? "is-active" : ""
           }
         >
-          H5
+          <SVGSelector name={"h5"}/>
         </button>
         <button
           onClick={() =>
@@ -194,66 +193,49 @@ const Workspace = () => {
             editor.isActive("heading", { level: 6 }) ? "is-active" : ""
           }
         >
-          H6
+          <SVGSelector name={"h6"}/>
         </button>
         <button
           onClick={() => editor.chain().focus().toggleBulletList().run()}
           className={editor.isActive("bulletList") ? "is-active" : ""}
         >
-          Bullet list
+          <SVGSelector name={"bulletlist"}/>
         </button>
         <button
           onClick={() => editor.chain().focus().toggleOrderedList().run()}
           className={editor.isActive("orderedList") ? "is-active" : ""}
         >
-          Ordered list
+          <SVGSelector name={"orderedlist"}/>
         </button>
         <button
           onClick={() => editor.chain().focus().toggleCodeBlock().run()}
           className={editor.isActive("codeBlock") ? "is-active" : ""}
         >
-          Code block
-        </button>
-        <button
-          onClick={() => editor.chain().focus().toggleBlockquote().run()}
-          className={editor.isActive("blockquote") ? "is-active" : ""}
-        >
-          Blockquote
+          <SVGSelector name={"codeblock"}/>
         </button>
         <button
           onClick={() => editor.chain().focus().setHorizontalRule().run()}
         >
-          Horizontal rule
-        </button>
-        <button onClick={() => editor.chain().focus().setHardBreak().run()}>
-          Hard break
+          <SVGSelector name={"horizontalrule"}/>
         </button>
         <button
           onClick={() => editor.chain().focus().undo().run()}
           disabled={!editor.can().chain().focus().undo().run()}
         >
-          Undo
+          <SVGSelector name={"undo"}/>
         </button>
         <button
           onClick={() => editor.chain().focus().redo().run()}
           disabled={!editor.can().chain().focus().redo().run()}
         >
-          Redo
+          <SVGSelector name={"redo"}/>
         </button>
-        {/* <button
-          onClick={() => editor.chain().focus().setColor("#958DF1").run()}
-          className={
-            editor.isActive("textStyle", { color: "#958DF1" })
-              ? "is-active"
-              : ""
-          }
-        >
-          Purple
-        </button> */}
+        
       </div>
 
       <EditorContent className={"editor"} editor={editor} />
       <div></div>
+      <ButtonList/>
     </div>
   );
 };
