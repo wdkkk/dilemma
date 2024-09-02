@@ -29,13 +29,6 @@ const Modal = (props: Props) => {
         setOpacity(1);
       }, 100);
 
-      // setTimeout(() => {
-      //   setOpacity(0);
-      // }, 2000);
-      // setTimeout(() => {
-      //   props.setStatus(false);
-      //   setIsVisible(false);
-      // }, 2500);
     } else {
       setOpacity(0);
       setTimeout(() => {
