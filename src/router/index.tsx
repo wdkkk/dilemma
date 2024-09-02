@@ -18,8 +18,4 @@ export const router = createBrowserRouter([
     path: "*",
     element: <App />,
   },
-  {
-    path: "/editor",
-    element: <Editor />,
-  },
 ]);

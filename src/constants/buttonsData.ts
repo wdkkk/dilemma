@@ -56,14 +56,6 @@ export const buttons : Button[] = [
         }
     },
     {
-        name: "h3",
-        function: (editor: Editor | null ) => {
-            if (editor !== null){
-                editor.chain().focus().toggleHeading({ level: 3 }).run()
-            }
-        }
-    },
-    {
         name: "h2",
         function: (editor: Editor | null ) => {
             if (editor !== null){
@@ -71,6 +63,15 @@ export const buttons : Button[] = [
             }
         }
     },
+    {
+        name: "h3",
+        function: (editor: Editor | null ) => {
+            if (editor !== null){
+                editor.chain().focus().toggleHeading({ level: 3 }).run()
+            }
+        }
+    },
+    
     {
         name: "h4",
         function: (editor: Editor | null ) => {

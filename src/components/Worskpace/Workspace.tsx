@@ -17,7 +17,8 @@ import { tasksSlice } from "../../reducers/tasks";
 
 import { Task } from "../../types";
 import SVGSelector from "../../assets/SVGSelector";
-import ButtonList from "../ButtonList/ButtonList";
+
+import { buttons } from "../../constants/buttonsData";
 
 type AppDispatch = typeof store.dispatch;
 
@@ -98,144 +99,15 @@ const Workspace = () => {
       </div>
 
       <div className={s.buttonGroup}>
-
-        <button
-          onClick={() => editor.chain().focus().toggleBold().run()}
-        >
-           <SVGSelector name={"bold"}/>
-        </button>
-        <button
-          onClick={() => editor.chain().focus().toggleItalic().run()}
-          // disabled={!editor.can().chain().focus().toggleItalic().run()}
-          // className={editor.isActive("italic") ? "is-active" : ""}
-        >
-          <SVGSelector name={"italic"}/>
-        </button>
-        <button
-          onClick={() => editor.chain().focus().toggleStrike().run()}
-          // disabled={!editor.can().chain().focus().toggleStrike().run()}
-          className={editor.isActive("strike") ? "is-active" : ""}
-        >
-          <SVGSelector name={"strike"}/>
-        </button>
-        <button
-          onClick={() => editor.chain().focus().toggleCode().run()}
-          // disabled={!editor.can().chain().focus().toggleCode().run()}
-          className={editor.isActive("code") ? "is-active" : ""}
-        >
-          <SVGSelector name={"code"}/>
-        </button>
-        {/* <button onClick={() => editor.chain().focus().unsetAllMarks().run()}>
-          Clear marks
-        </button> */}
-        
-        <button
-          onClick={() => editor.chain().focus().setParagraph().run()}
-          className={editor.isActive("paragraph") ? "is-active" : ""}
-        >
-          <SVGSelector name={"paragraph"}/>
-        </button>
-        <button
-          onClick={() =>
-            editor.chain().focus().toggleHeading({ level: 1 }).run()
-          }
-          className={
-            editor.isActive("heading", { level: 1 }) ? "is-active" : ""
-          }
-        >
-          <SVGSelector name={"h1"}/>
-        </button>
-        <button
-          onClick={() =>
-            editor.chain().focus().toggleHeading({ level: 2 }).run()
-          }
-          className={
-            editor.isActive("heading", { level: 2 }) ? "is-active" : ""
-          }
-        >
-          <SVGSelector name={"h2"}/>
-        </button>
-        <button
-          onClick={() =>
-            editor.chain().focus().toggleHeading({ level: 3 }).run()
-          }
-          className={
-            editor.isActive("heading", { level: 3 }) ? "is-active" : ""
-          }
-        >
-          <SVGSelector name={"h3"}/>
-        </button>
-        <button
-          onClick={() =>
-            editor.chain().focus().toggleHeading({ level: 4 }).run()
-          }
-          className={
-            editor.isActive("heading", { level: 4 }) ? "is-active" : ""
-          }
-        >
-          <SVGSelector name={"h4"}/>
-        </button>
-        <button
-          onClick={() =>
-            editor.chain().focus().toggleHeading({ level: 5 }).run()
-          }
-          className={
-            editor.isActive("heading", { level: 5 }) ? "is-active" : ""
-          }
-        >
-          <SVGSelector name={"h5"}/>
-        </button>
-        <button
-          onClick={() =>
-            editor.chain().focus().toggleHeading({ level: 6 }).run()
-          }
-          className={
-            editor.isActive("heading", { level: 6 }) ? "is-active" : ""
-          }
-        >
-          <SVGSelector name={"h6"}/>
-        </button>
-        <button
-          onClick={() => editor.chain().focus().toggleBulletList().run()}
-          className={editor.isActive("bulletList") ? "is-active" : ""}
-        >
-          <SVGSelector name={"bulletlist"}/>
-        </button>
-        <button
-          onClick={() => editor.chain().focus().toggleOrderedList().run()}
-          className={editor.isActive("orderedList") ? "is-active" : ""}
-        >
-          <SVGSelector name={"orderedlist"}/>
-        </button>
-        <button
-          onClick={() => editor.chain().focus().toggleCodeBlock().run()}
-          className={editor.isActive("codeBlock") ? "is-active" : ""}
-        >
-          <SVGSelector name={"codeblock"}/>
-        </button>
-        <button
-          onClick={() => editor.chain().focus().setHorizontalRule().run()}
-        >
-          <SVGSelector name={"horizontalrule"}/>
-        </button>
-        <button
-          onClick={() => editor.chain().focus().undo().run()}
-          disabled={!editor.can().chain().focus().undo().run()}
-        >
-          <SVGSelector name={"undo"}/>
-        </button>
-        <button
-          onClick={() => editor.chain().focus().redo().run()}
-          disabled={!editor.can().chain().focus().redo().run()}
-        >
-          <SVGSelector name={"redo"}/>
-        </button>
-        
+        {buttons.map((btn) => (
+          <button key={btn.name} onClick={() => btn.function(editor)}>
+            <SVGSelector name={btn.name} />
+          </button>
+        ))}
       </div>
 
       <EditorContent className={"editor"} editor={editor} />
       <div></div>
-      <ButtonList/>
     </div>
   );
 };
