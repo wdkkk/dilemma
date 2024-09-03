@@ -84,6 +84,10 @@ const Workspace = () => {
     }
   }, [params.id]);
 
+  useEffect(() => {
+    if (task.title === "untitled") setTextareaPlaceholder("untitled");
+  }, [task.title]);
+
   if (!editor) {
     return null;
   }

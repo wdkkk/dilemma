@@ -1,3 +1,5 @@
+@import '../../constants/variables.scss';
+
 .editor {
   max-width: calc(95vw - 440px);
   margin-top: 20px;
@@ -36,6 +38,12 @@
     }
     h6 {
       font-size: 18px;
+    }
+
+    p code {
+      background-color: var(--background-secondary-color);
+      width: 100%;
+      display: block;
     }
   }
 }
