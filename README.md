@@ -2,7 +2,7 @@
 
 # Менеджер задач с открытым исходным кодом
 
-dilemma - это менеджер задач с открытым исходным кодом. Проект находится в разработке.
+<a href="https://dilemma-tasks.netlify.app/">dilemma</a> - это менеджер задач с открытым исходным кодом. Проект находится в разработке.
 
 ## Технологии
 
@@ -10,13 +10,13 @@ dilemma - это менеджер задач с открытым исходны�
 
 Все данные пользователя хранятся в локальном хранилище и не отгружаются на сервера.
 
-Технологии: Vite, React.js, TypeScript, Redux, react-router, StoryBook, React-Router
+Технологии: Vite, React.js, TypeScript, Redux, react-router, Storybook
 
 ![](https://i.imgur.com/K8akxNc.png)
 
 # Open Source task manager
 
-dilemma is an open source task manager. The project is in development.
+<a href="https://dilemma-tasks.netlify.app/">dilemma</a> is an open source task manager. The project is in development.
 
 ## Technologies
 
@@ -24,6 +24,6 @@ dilemma is an open source task manager. The project is in development.
 
 All user data is stored in local storage and not uploaded to servers.
 
-Technologies: Vite, React.js, TypeScript, Redux, react-router, StoryBook, React-Router
+Technologies: Vite, React.js, TypeScript, Redux, react-router, Storybook
 
 ![](https://i.imgur.com/QvxMsLT.png)
