@@ -2,7 +2,7 @@
 
 # Менеджер задач с открытым исходным кодом
 
-<a href="https://dilemma-tasks.netlify.app/">dilemma</a> - это менеджер задач с открытым исходным кодом. Проект находится в разработке.
+<a href="https://dilemma-tasks.netlify.app/" target="_blank">dilemma</a> - это менеджер задач с открытым исходным кодом. Проект находится в разработке.
 
 ## Технологии
 
@@ -16,7 +16,7 @@
 
 # Open Source task manager
 
-<a href="https://dilemma-tasks.netlify.app/">dilemma</a> is an open source task manager. The project is in development.
+<a href="https://dilemma-tasks.netlify.app/" target="_blank">dilemma</a> is an open source task manager. The project is in development.
 
 ## Technologies
 
