@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { tasksSlice } from "../../reducers/tasks";
+import { tasksSlice } from "../../reducers/Tasks";
 
 import AddButton from "../AddButton/AddButton";
 import Modal from "../../UI/Modal/Modal";

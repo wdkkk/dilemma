@@ -13,7 +13,8 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import { store } from "../../store/store";
-import { tasksSlice } from "../../reducers/tasks";
+
+import { tasksSlice } from "../../reducers/Tasks";
 
 import { Task } from "../../types";
 import SVGSelector from "../../assets/SVGSelector";

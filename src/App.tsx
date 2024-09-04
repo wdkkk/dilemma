@@ -1,7 +1,8 @@
 import "./index.scss";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { tasksSlice } from "./reducers/tasks";
+import { tasksSlice } from "./reducers/Tasks";
+
 import { store } from "./store/store";
 
 import TasksDisplay from "./components/TasksDisplay/TasksDisplay";
@@ -22,10 +23,16 @@ function App() {
   }, []);
 
   const tasks = useSelector((state: State) => state.tasks.tasks);
-  const theme = useSelector((state: State) => state.tasks.settings.theme.value);
+  const theme = useSelector((state: State) => {
+    const settings = state.tasks.settings;
+
+    for (const index in settings) {
+      if (settings[index].name === "theme") return settings[index].value;
+    }
+  });
 
   useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
+    if (theme) document.documentElement.setAttribute("data-theme", theme);
   }, [theme]);
 
   return (

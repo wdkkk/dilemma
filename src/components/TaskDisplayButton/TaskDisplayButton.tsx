@@ -1,7 +1,7 @@
 import s from "./TaskDisplayButton.module.scss";
 
 import { State, Task } from "../../types";
-import { tasksSlice } from "../../reducers/tasks";
+import { tasksSlice } from "../../reducers/Tasks";
 
 import { useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";

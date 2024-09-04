@@ -3,13 +3,13 @@ import { Settings, Task, TasksState } from "../types";
 
 const initialState: TasksState = {
   tasks: [],
-  settings: {
-    theme: {
+  settings: [
+    {
       name: 'theme',
       value: 'light',
       options: ['light', 'dark', 'blue', 'red'],
     },
-  },
+  ],
   isOpened: false,
   openedTaskId: -1
 }
@@ -87,13 +87,13 @@ export const tasksSlice = createSlice({
     },
     initSettings(state) {
       if (!localStorage['settings']) {
-        const initSettingsObj: Settings = {
-          theme: {
+        const initSettingsObj: Settings = [
+          {
             name: 'theme',
             value: 'light',
             options: ['light', 'dark', 'blue', 'red'],
           },
-        }
+        ]
 
         localStorage.setItem('settings', JSON.stringify(initSettingsObj))
         state.settings = initSettingsObj
@@ -106,7 +106,10 @@ export const tasksSlice = createSlice({
       const newLocalStorageSettings = JSON.parse(localStorageSettings)
 
       state.settings[action.payload.key].value = action.payload.option.value
-      
+      // state.settings['theme'].value = action.payload.option.value
+
+
+
       newLocalStorageSettings[action.payload.key].value = action.payload.option.value
       localStorage.setItem('settings', JSON.stringify(newLocalStorageSettings))
     },
